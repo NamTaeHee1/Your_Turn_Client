@@ -1,0 +1,98 @@
+﻿<Window x:Class="Your_Turn_Client.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Your_Turn_Client"
+        mc:Ignorable="d"
+        Title="YourTurn" Height="680" Width="1200" Closing="Window_Closing" ResizeMode="NoResize">
+    <Grid Background="White">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="7*"></ColumnDefinition>
+            <ColumnDefinition Width="3*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid Grid.Column="0">
+            <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" Text="이미지" FontSize="50"></TextBlock>
+        </Grid>
+        <!--Login Panel-->
+        <StackPanel Grid.Column="1" Orientation="Vertical" Background="#FFFAFAFA" x:Name="LoginPanel" Visibility="Visible">
+            <TextBlock Text="로그인" HorizontalAlignment="Left" TextAlignment="Center" FontSize="40" Margin="30, 90, 0, 0" FontFamily="Font\#이사만루체 Medium"></TextBlock>
+            <TextBlock Text="아이디" Margin="35, 50, 0, 0" FontSize="15" FontFamily="Font\#이사만루체 Medium"></TextBlock>
+            <TextBox Height="40" Width="200" HorizontalAlignment="Left" Margin="30, 5, 0, 0" Background="#FFEEEEEE" BorderBrush="{x:Null}" VerticalContentAlignment="Center" FontSize="15" Padding="5,0,0,0" MaxLength="12" x:Name="LoginIDTextBox" KeyUp="InputID_Changed">
+                <TextBox.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="10"/>
+                    </Style>
+                    <Style TargetType="TextBox">
+                        <Setter Property="FontFamily" Value="Font\#이사만루체 Medium"></Setter>
+                    </Style>
+                </TextBox.Resources>
+            </TextBox>
+            <TextBlock Text="비밀번호" Margin="35, 15, 0, 0" FontSize="15" FontFamily="Font\#이사만루체 Medium"></TextBlock>
+            <StackPanel Orientation="Horizontal">
+                <PasswordBox Height="40" Width="200" HorizontalAlignment="Left" Margin="30, 5, 0, 0" Background="#FFEEEEEE" BorderBrush="{x:Null}" VerticalContentAlignment="Center" FontSize="13" Padding="5, 0, 0, 0" MaxLength="10" x:Name="LoginPasswordTextBox" KeyUp="InputPassword_Changed">
+                    <PasswordBox.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="10" />
+                        </Style>
+                    </PasswordBox.Resources>
+                </PasswordBox>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="0, 20, 0, 0">
+                <CheckBox Margin="35, 0, 0, 0" BorderBrush="{x:Null}" Background="#FFEEEEEE"></CheckBox>
+                <TextBlock Margin="5, 0, 0, 0" Text="자동 로그인" FontFamily="Font\#이사만루체 Medium"></TextBlock>
+            </StackPanel>
+            <Button Width="100" Height="100" Background="{x:Null}" BorderBrush="{x:Null}" Margin="0, 50, 0, 0" Click="LoginButtonClick">
+                <Image Source="Image\LoginImpossibleButton.png" x:Name="LoginButtonImage"></Image>
+            </Button>
+            <Button x:Name="FromLoginToRegister" Content="회원가입" Margin="35, 60, 0, 0" HorizontalContentAlignment="Center" Width="55" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF838383" HorizontalAlignment="Left" Click="ToRegisterPanel" FontFamily="Font\#이사만루체 Medium"></Button>
+        </StackPanel>
+        
+        <!--Register Panel-->
+        <StackPanel Grid.Column="1" Orientation="Vertical" Background="#FFFAFAFA" x:Name="RegisterPanel" Visibility="Collapsed">
+            <TextBlock Text="회원가입" HorizontalAlignment="Left" TextAlignment="Center" FontSize="40"  Margin="30, 65, 0, 0" FontFamily="Font\#이사만루체 Medium"></TextBlock>
+            <TextBlock Text="아이디" Margin="35, 30, 0, 0" FontSize="15" FontFamily="Font\#이사만루체 Medium"></TextBlock>
+            <StackPanel Orientation="Horizontal">
+                <TextBox x:Name="RegisterIDTextBox" Height="40" Width="200" HorizontalAlignment="Left" Margin="30, 5, 0, 0" Background="#FFEEEEEE" BorderBrush="{x:Null}" VerticalContentAlignment="Center" FontSize="15" Padding="5,0,0,0" MaxLength="12" KeyUp="InputID_Changed">
+                    <TextBox.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="10"/>
+                        </Style>
+                        <Style TargetType="TextBox">
+                            <Setter Property="FontFamily" Value="Font\#이사만루체 Medium"></Setter>
+                        </Style>
+                    </TextBox.Resources>
+                </TextBox>
+                <Button VerticalAlignment="Center" Content="중복확인" HorizontalContentAlignment="Center" Width="50" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF838383" Margin="10, 5, 0, 0" FontFamily="Font\#이사만루체 Medium" Click="CheckIdOverlap" ></Button>
+            </StackPanel>
+            <TextBlock Text="" Margin="35, 5, 0, 0" FontSize="10" FontFamily="Font\#이사만루체 Medium" x:Name="CanUseThisIDText"></TextBlock>
+            <TextBlock Text="비밀번호" Margin="35, 5, 0, 0" FontSize="15" FontFamily="Font\#이사만루체 Medium"></TextBlock>
+            <PasswordBox Height="40" Width="200" HorizontalAlignment="Left" Margin="30, 5, 0, 0" Background="#FFEEEEEE" BorderBrush="{x:Null}" VerticalContentAlignment="Center" FontSize="13" Padding="5, 0, 0, 0" MaxLength="10"  KeyUp="InputPassword_Changed" x:Name="RegisterPasswordTextBox"></PasswordBox>
+            <TextBlock Text="비밀번호 확인" Margin="35, 15, 0, 0" FontSize="15" FontFamily="Font\#이사만루체 Medium"></TextBlock>
+            <StackPanel Orientation="Horizontal">
+                <PasswordBox Height="40" Width="200" HorizontalAlignment="Left" Margin="30, 5, 0, 0" Background="#FFEEEEEE" BorderBrush="{x:Null}" VerticalContentAlignment="Center" FontSize="13" Padding="5, 0, 0, 0" MaxLength="10"  KeyUp="InputCheckPassword_Changed" x:Name="RegisterPasswordCheckTextBox"></PasswordBox>
+                <TextBlock Text="" VerticalAlignment="Center" FontSize="15" FontFamily="Font\#이사만루체 Medium" Margin="10, 0, 0, 0" x:Name="RegisterPasswordCheckText"></TextBlock>
+            </StackPanel>
+            <TextBlock Text="닉네임" Margin="35, 15, 0, 0" FontSize="15" FontFamily="Font\#이사만루체 Medium"></TextBlock>
+            <StackPanel Orientation="Horizontal">
+                <TextBox Height="40" Width="200" HorizontalAlignment="Left" Margin="30, 5, 0, 0" Background="#FFEEEEEE" BorderBrush="{x:Null}" VerticalContentAlignment="Center" FontSize="15" Padding="5, 0, 0, 0" MaxLength="10"  KeyUp="InputNickName_Changed" x:Name="RegisterNickNameTextBox">
+                    <TextBox.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="10"></Setter>
+                        </Style>
+                        <Style TargetType="TextBox">
+                            <Setter Property="FontFamily" Value="Font\#이사만루체 Medium"></Setter>
+                        </Style>
+                    </TextBox.Resources>
+                </TextBox>
+                <Button VerticalAlignment="Center" Content="중복확인" HorizontalContentAlignment="Center" Width="50" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF838383" Margin="10, 5, 0, 0" FontFamily="Font\#이사만루체 Medium" Click="CheckNickNameOverlap" ></Button>
+            </StackPanel>
+            <TextBlock Text="" Margin="35, 15, 0, 0" FontSize="10" FontFamily="Font\#이사만루체 Medium" x:Name="CanUseThisNickNameText"></TextBlock>
+            <Button Width="100" Height="100" Background="{x:Null}" BorderBrush="{x:Null}" Margin="0, 20, 0, 0" Click="RegisterButtonClick" >
+                <Image Source="Image\RegisterImpossibleButton.png" x:Name="RegisterButtonImage"></Image>
+            </Button>
+            <Button x:Name="FromRegisterToLoginButton" Content="로그인" Margin="35, 10, 0, 0" HorizontalContentAlignment="Center" Width="55" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF838383" HorizontalAlignment="Left" Click="ToLoginPanel" FontFamily="Font\#이사만루체 Medium"></Button>
+        </StackPanel>
+    </Grid>
+
+</Window>
