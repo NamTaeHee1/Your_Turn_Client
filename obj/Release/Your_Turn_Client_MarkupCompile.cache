@@ -4,15 +4,15 @@
 winexe
 C#
 .cs
-D:\github\Your_Turn_Client\obj\Debug\
+D:\github\Your_Turn_Client\obj\Release\
 Your_Turn_Client
 none
 false
-DEBUG;TRACE
+TRACE
 D:\github\Your_Turn_Client\App.xaml
 11151548125
 
-8-1827182105
+7-984822738
 13591066585
 MainWindow.xaml;
 

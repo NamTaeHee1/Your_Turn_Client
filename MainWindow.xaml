@@ -21,7 +21,7 @@
             <TextBox Height="40" Width="200" HorizontalAlignment="Left" Margin="30, 5, 0, 0" Background="#FFEEEEEE" BorderBrush="{x:Null}" VerticalContentAlignment="Center" FontSize="15" Padding="5,0,0,0" MaxLength="12" x:Name="LoginIDTextBox" KeyUp="InputID_Changed">
                 <TextBox.Resources>
                     <Style TargetType="Border">
-                        <Setter Property="CornerRadius" Value="10"/>
+                        <Setter Property="CornerRadius" Value="9"/>
                     </Style>
                     <Style TargetType="TextBox">
                         <Setter Property="FontFamily" Value="Font\#이사만루체 Medium"></Setter>
