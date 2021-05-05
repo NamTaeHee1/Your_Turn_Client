@@ -130,7 +130,16 @@ namespace Your_Turn_Client
             if (isPossibleLogin)
             {
                 string TryString = DB.TryLogin(LoginIDTextBox.Text, LoginPasswordTextBox.Password);
-                MessageBox.Show(TryString);
+                if (TryString.Equals("로그인 성공"))
+                   {
+                    LoginPanel.Visibility = Visibility.Collapsed;
+                    ImagePanel.Visibility = Visibility.Collapsed;
+                    RegisterPanel.Visibility = Visibility.Collapsed;
+                    PlayPanel.Visibility = Visibility.Visible;
+                    ShowIDText.Text = string.Format("{0}님, 환영합니다.", DB.GetNickName(LoginIDTextBox.Text, LoginPasswordTextBox.Password));
+                   }
+                else
+                    MessageBox.Show(TryString);
             }
         }
 

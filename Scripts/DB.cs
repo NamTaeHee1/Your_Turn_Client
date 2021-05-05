@@ -46,6 +46,25 @@ namespace Your_Turn_Client.Scripts
             return "로그인 실패";
         }
 
+        public string GetNickName(string Id, string Password)
+        {
+            ConnectDataBase();
+            MySqlCommand cmd = new MySqlCommand(FIndNickNameSql, Connection);
+            MySqlDataReader Reader = cmd.ExecuteReader();
+
+            while (Reader.Read())
+            {
+                if (Reader["Id"].ToString().Equals(Id))
+                {
+                    if (Reader["Password"].ToString().Equals(Password))
+                    {
+                        return Reader["Nickname"].ToString();
+                    }
+                }
+            }
+            return "guest";
+        }
+
         public int InsertUser(string Id, string Password, string Nickname)
         {
             ConnectDataBase();
