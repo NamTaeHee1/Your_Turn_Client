@@ -21,8 +21,6 @@ namespace Your_Turn_Client
 {
     public partial class MainWindow : Window
     {
-        TCP TCPServer = new TCP();
-        Thread ListenThread;
         bool isLoginInputID, isLoginInputPassword, isPossibleLogin = false;
         bool isRegisterInputID, isRegisterInputPassword, isRegisterInputCheckPassword, isRegisterInputNickName, isSamePassword, isCanUseThisNickName, isCanUseThisID,  isPossibleRegister = false;
         Scripts.DB DB = new Scripts.DB();
@@ -34,12 +32,6 @@ namespace Your_Turn_Client
 /*            ListenThread = new Thread(new ThreadStart(TCPServer.StartServer));
             ListenThread.Start();*/
         }
-
-        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
-        {
-            TCPServer.CloseServer();
-        }
-
 
 
         private void InputID_Changed(object sender, KeyEventArgs e)
