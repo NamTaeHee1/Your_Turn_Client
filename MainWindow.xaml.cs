@@ -28,9 +28,6 @@ namespace Your_Turn_Client
         public MainWindow()
         {
             InitializeComponent();
-
-/*            ListenThread = new Thread(new ThreadStart(TCPServer.StartServer));
-            ListenThread.Start();*/
         }
 
 

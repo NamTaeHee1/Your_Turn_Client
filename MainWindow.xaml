@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Your_Turn_Client"
         mc:Ignorable="d"
-        Title="YourTurn" Height="680" Width="1200" Closing="Window_Closing" ResizeMode="NoResize">
+        Title="YourTurn" Height="680" Width="1200" ResizeMode="NoResize">
     <Grid Background="White">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="7*"></ColumnDefinition>

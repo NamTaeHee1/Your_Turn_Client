@@ -99,7 +99,6 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Scripts\DB.cs" />
-    <Compile Include="Scripts\TCP.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -148,6 +147,9 @@
   <ItemGroup>
     <Resource Include="Image\RegisterImpossibleButton.png" />
     <Resource Include="Image\RegisterPossibleButton.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="FileStream\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
