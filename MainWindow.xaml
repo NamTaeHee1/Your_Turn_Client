@@ -15,7 +15,7 @@
             <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" Text="이미지" FontSize="50" x:Name="ImagePanel" Visibility="Collapsed"></TextBlock>
         </Grid>
         <!--Login Panel-->
-        <StackPanel Grid.Column="1" Orientation="Vertical" Background="#FFFAFAFA" x:Name="LoginPanel" Visibility="Collapsed">
+        <StackPanel Grid.Column="1" Orientation="Vertical" Background="#FFFAFAFA" x:Name="LoginPanel" Visibility="Visible">
             <TextBlock Text="로그인" HorizontalAlignment="Left" TextAlignment="Center" FontSize="40" Margin="30, 90, 0, 0" FontFamily="Font\#이사만루체 Medium"></TextBlock>
             <TextBlock Text="아이디" Margin="35, 50, 0, 0" FontSize="15" FontFamily="Font\#이사만루체 Medium"></TextBlock>
             <TextBox Height="40" Width="200" HorizontalAlignment="Left" Margin="30, 5, 0, 0" Background="#FFEEEEEE" BorderBrush="{x:Null}" VerticalContentAlignment="Center" FontSize="15" Padding="5,0,0,0" MaxLength="12" x:Name="LoginIDTextBox" KeyUp="InputID_Changed">
@@ -95,7 +95,7 @@
         </StackPanel>
 
         <!-- PlayPanel -->
-        <StackPanel Orientation="Vertical" x:Name="PlayPanel" Visibility="Visible">
+        <StackPanel Orientation="Vertical" x:Name="PlayPanel" Visibility="Collapsed">
             <TextBlock x:Name="ShowIDText" FontSize="20" Text="***님, 환영합니다." Margin="5, 5, 0, 0">
                 <TextBlock.Resources>
                     <Style TargetType="TextBlock">
