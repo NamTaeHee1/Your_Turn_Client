@@ -11,8 +11,9 @@
             <ColumnDefinition Width="7*"></ColumnDefinition>
             <ColumnDefinition Width="3*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
-        <Grid Grid.Column="0">
-            <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" Text="이미지" FontSize="50" x:Name="ImagePanel" Visibility="Collapsed"></TextBlock>
+        <Grid Grid.Column="0" Grid.ColumnSpan="1">
+            <Image x:Name="LoginBeforeBackGroundImage" Source="Image\BackGround.png" Stretch="UniformToFill" Margin="0, 0, -360, 0" />
+            <Image x:Name="LoginAfterBackGroundImage" Source="Image\BackGround.png" Stretch="UniformToFill" Margin="0, 0, -360, 0" OpacityMask="#4C000000" />
         </Grid>
         <!--Login Panel-->
         <StackPanel Grid.Column="1" Orientation="Vertical" Background="#FFFAFAFA" x:Name="LoginPanel" Visibility="Visible">

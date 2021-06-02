@@ -126,11 +126,11 @@ namespace Your_Turn_Client
                     File.WriteAutoLoginValue(AutoLogin.IsChecked, DB.GetNickName(LoginIDTextBox.Text, LoginPasswordTextBox.Password));
                     File.WriteNickName(DB.GetNickName(LoginIDTextBox.Text, LoginPasswordTextBox.Password));
                     LoginPanel.Visibility = Visibility.Collapsed;
-                    ImagePanel.Visibility = Visibility.Collapsed;
                     RegisterPanel.Visibility = Visibility.Collapsed;
                     PlayPanel.Visibility = Visibility.Visible;
                     ShowIDText.Text = string.Format("{0}님, 환영합니다.", DB.GetNickName(LoginIDTextBox.Text, LoginPasswordTextBox.Password));
-                   }
+                    LoginBeforeBackGroundImage.Visibility = Visibility.Collapsed;
+                }
                 else
                     MessageBox.Show(TryString);
             }
