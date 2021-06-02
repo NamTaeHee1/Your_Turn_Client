@@ -24,10 +24,12 @@ namespace Your_Turn_Client
         bool isLoginInputID, isLoginInputPassword, isPossibleLogin = false;
         bool isRegisterInputID, isRegisterInputPassword, isRegisterInputCheckPassword, isRegisterInputNickName, isSamePassword, isCanUseThisNickName, isCanUseThisID,  isPossibleRegister = false;
         Scripts.DB DB = new Scripts.DB();
+        Scripts.FileManager File = new Scripts.FileManager();
 
         public MainWindow()
         {
             InitializeComponent();
+            File.CheckExistsFile();
         }
 
 
