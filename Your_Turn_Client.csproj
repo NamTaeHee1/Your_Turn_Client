@@ -152,5 +152,8 @@
   <ItemGroup>
     <Folder Include="FileStream\" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image\PlayButton.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

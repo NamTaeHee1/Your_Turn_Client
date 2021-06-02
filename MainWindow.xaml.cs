@@ -29,7 +29,6 @@ namespace Your_Turn_Client
         public MainWindow()
         {
             InitializeComponent();
-            File.CheckExistsFile();
         }
 
 
@@ -51,7 +50,7 @@ namespace Your_Turn_Client
         private void InputPassword_Changed(object sender, KeyEventArgs e)
         {
             WindowUpdate();
-            if(LoginPanel.Visibility == Visibility.Visible)
+            if (LoginPanel.Visibility == Visibility.Visible)
             {
                 isLoginInputPassword = LoginPasswordTextBox.Password == "" ? false : true;
                 CheckReadyToLogin();
@@ -118,11 +117,14 @@ namespace Your_Turn_Client
 
         private void LoginButtonClick(object sender, RoutedEventArgs e)
         {
+            Console.WriteLine(File.ReadAutoLoginValue());
             if (isPossibleLogin)
             {
                 string TryString = DB.TryLogin(LoginIDTextBox.Text, LoginPasswordTextBox.Password);
                 if (TryString.Equals("로그인 성공"))
                    {
+                    File.WriteAutoLoginValue(AutoLogin.IsChecked, DB.GetNickName(LoginIDTextBox.Text, LoginPasswordTextBox.Password));
+                    File.WriteNickName(DB.GetNickName(LoginIDTextBox.Text, LoginPasswordTextBox.Password));
                     LoginPanel.Visibility = Visibility.Collapsed;
                     ImagePanel.Visibility = Visibility.Collapsed;
                     RegisterPanel.Visibility = Visibility.Collapsed;

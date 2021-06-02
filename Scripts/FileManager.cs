@@ -11,30 +11,45 @@ namespace Your_Turn_Client.Scripts
     {
         string AutoLoginFilePath = @"D:\github\Your_Turn_Client\FileStream\AutoLogin.txt";
         string NickNameFilePath = @"D:\github\Your_Turn_Client\FileStream\NickName.txt";
-        FileStream AutoLoginFileStream, NickNameFileStream;
 
-        public void CheckExistsFile()
+        public void WriteAutoLoginValue(bool? isCheckAutoLogin, string NickName)
         {
-            if(File.Exists(AutoLoginFilePath))
-                AutoLoginFileStream = File.Create(AutoLoginFilePath);
-            if(File.Exists(NickNameFilePath))
-                NickNameFileStream = File.Create(NickNameFilePath);
+            WriteText(isCheckAutoLogin.ToString(), AutoLoginFilePath);
+        }
+        public string ReadAutoLoginValue()
+        {
+            return ReadText(AutoLoginFilePath).Contains("True") ? "True" : "False";
         }
 
-        public void WriteAutoLoginValue()
+        public void WriteNickName(string NickName)
         {
-            
+            WriteText(NickName, NickNameFilePath);
         }
 
-        public bool CheckAutoLogin()
+        public void WriteText(string value, string path)
         {
-            return true;
+            using (FileStream fs = File.Create(path))
+            {
+                byte[] info = new UTF8Encoding(true).GetBytes(value);
+                fs.Write(info, 0, info.Length);
+                fs.Close();
+            }
         }
 
-        public void AddText(FileStream fs, string value)
+        public string ReadText(string path)
         {
-            byte[] info = new UTF8Encoding(true).GetBytes(value);
-            fs.Write(info, 0, info.Length);
+            using (FileStream fs = File.OpenRead(path))
+            {
+                string text = "";
+                byte[] b = new byte[1024];
+                UTF8Encoding temp = new UTF8Encoding(true);
+                while (fs.Read(b, 0, b.Length) > 0)
+                {
+                    text += temp.GetString(b);
+                }
+                fs.Close();
+                return text;
+            }
         }
     }
 }
