@@ -12,7 +12,7 @@
             <ColumnDefinition Width="3*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
         <Grid Grid.Column="0" Grid.ColumnSpan="1">
-            <Image x:Name="LoginBeforeBackGroundImage" Source="Image\BackGround.png" Stretch="UniformToFill" Margin="0, 0, -360, 0" />
+            <Image x:Name="LoginBeforeBackGroundImage" Source="Image\BackGround.png" Stretch="UniformToFill" Margin="0, 0, -360, 0" Visibility="Visible"/>
             <Image x:Name="LoginAfterBackGroundImage" Source="Image\BackGround.png" Stretch="UniformToFill" Margin="0, 0, -360, 0" OpacityMask="#4C000000" />
         </Grid>
         <!--Login Panel-->
@@ -40,7 +40,7 @@
                 </PasswordBox>
             </StackPanel>
             <StackPanel Orientation="Horizontal" Margin="0, 20, 0, 0">
-                <CheckBox Margin="35, 0, 0, 0" BorderBrush="{x:Null}" Background="#FFEEEEEE" x:Name="AutoLogin"></CheckBox>
+                <CheckBox Margin="35, 0, 0, 0" BorderBrush="{x:Null}" Background="#FFEEEEEE" x:Name="AutoLoginCheckBox"></CheckBox>
                 <TextBlock Margin="5, 0, 0, 0" Text="자동 로그인" FontFamily="Font\#이사만루체 Medium"></TextBlock>
             </StackPanel>
             <Button Width="100" Height="100" Background="{x:Null}" BorderBrush="{x:Null}" Margin="0, 50, 0, 0" Click="LoginButtonClick">
@@ -104,6 +104,7 @@
                     </Style>
                 </TextBlock.Resources>
             </TextBlock>
+            <Button Content="로그아웃" x:Name="LogoutButton" Margin="3, 10, 0, 0" HorizontalContentAlignment="Center" Width="55" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF838383" HorizontalAlignment="Left" FontFamily="Font\#이사만루체 Medium" Click="LogoutButtonClick"></Button>
             <Button Width="440" Height="150" VerticalContentAlignment="Center" Margin="320, 200, 0, 0" Foreground="#FF838383" BorderBrush="{x:Null}" Background="{x:Null}" FontSize="100" >
                 <ContentControl>
                     <StackPanel Orientation="Horizontal" Width="Auto" HorizontalAlignment="Left">

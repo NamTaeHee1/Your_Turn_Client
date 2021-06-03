@@ -21,6 +21,11 @@ namespace Your_Turn_Client.Scripts
             return ReadText(AutoLoginFilePath).Contains("True") ? "True" : "False";
         }
 
+        public string ReadNickNameValue()
+        {
+            return ReadText(NickNameFilePath);
+        }
+
         public void WriteNickName(string NickName)
         {
             WriteText(NickName, NickNameFilePath);

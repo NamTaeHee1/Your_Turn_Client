@@ -29,6 +29,8 @@ namespace Your_Turn_Client
         public MainWindow()
         {
             InitializeComponent();
+            if (File.ReadAutoLoginValue().Equals("True"))
+                AutoLogin();
         }
 
 
@@ -115,15 +117,24 @@ namespace Your_Turn_Client
 
         }
 
+        private void LogoutButtonClick(object sender, RoutedEventArgs e)
+        {
+            GoToRegisterPanel();
+            AutoLoginCheckBox.IsChecked = false;
+            LoginPanel.Visibility = Visibility.Visible;
+            RegisterPanel.Visibility = Visibility.Collapsed;
+            PlayPanel.Visibility = Visibility.Collapsed;
+            LoginBeforeBackGroundImage.Visibility = Visibility.Visible;
+        }
+
         private void LoginButtonClick(object sender, RoutedEventArgs e)
         {
-            Console.WriteLine(File.ReadAutoLoginValue());
             if (isPossibleLogin)
             {
                 string TryString = DB.TryLogin(LoginIDTextBox.Text, LoginPasswordTextBox.Password);
                 if (TryString.Equals("로그인 성공"))
                    {
-                    File.WriteAutoLoginValue(AutoLogin.IsChecked, DB.GetNickName(LoginIDTextBox.Text, LoginPasswordTextBox.Password));
+                    File.WriteAutoLoginValue(AutoLoginCheckBox.IsChecked, DB.GetNickName(LoginIDTextBox.Text, LoginPasswordTextBox.Password));
                     File.WriteNickName(DB.GetNickName(LoginIDTextBox.Text, LoginPasswordTextBox.Password));
                     LoginPanel.Visibility = Visibility.Collapsed;
                     RegisterPanel.Visibility = Visibility.Collapsed;
@@ -134,6 +145,15 @@ namespace Your_Turn_Client
                 else
                     MessageBox.Show(TryString);
             }
+        }
+
+        void AutoLogin()
+        {
+            LoginPanel.Visibility = Visibility.Collapsed;
+            RegisterPanel.Visibility = Visibility.Collapsed;
+            PlayPanel.Visibility = Visibility.Visible;
+            ShowIDText.Text = string.Format("{0}님, 환영합니다.", File.ReadNickNameValue());
+            LoginBeforeBackGroundImage.Visibility = Visibility.Collapsed;
         }
 
         private void RegisterButtonClick(object sender, RoutedEventArgs e)
