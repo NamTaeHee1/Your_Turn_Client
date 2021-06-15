@@ -105,7 +105,7 @@
                 </TextBlock.Resources>
             </TextBlock>
             <Button Content="로그아웃" x:Name="LogoutButton" Margin="3, 10, 0, 0" HorizontalContentAlignment="Center" Width="55" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF838383" HorizontalAlignment="Left" FontFamily="Font\#이사만루체 Medium" Click="LogoutButtonClick"></Button>
-            <Button Width="440" Height="150" VerticalContentAlignment="Center" Margin="320, 200, 0, 0" Foreground="#FF838383" BorderBrush="{x:Null}" Background="{x:Null}" FontSize="100" >
+            <Button Width="440" Height="150" VerticalContentAlignment="Center" Margin="320, 200, 0, 0" Foreground="#FF838383" BorderBrush="{x:Null}" Background="{x:Null}" FontSize="100" Visibility="Visible" x:Name="GameStartButton" Click="ClickGameStart">
                 <ContentControl>
                     <StackPanel Orientation="Horizontal" Width="Auto" HorizontalAlignment="Left">
                         <Image Margin="0, 0, 10, 0" Source="Image\PlayButton.png"></Image>
@@ -113,6 +113,13 @@
                     </StackPanel>
                 </ContentControl>
             </Button>
+            <TextBlock Margin="500, 220, 0, 0" Text="게임 중..." FontSize="55" Visibility="Collapsed" x:Name="GameText">
+                <TextBlock.Resources>
+                    <Style TargetType="TextBlock">
+                        <Setter Property="FontFamily" Value="Font\#이사만루체 Medium"></Setter>
+                    </Style>
+                </TextBlock.Resources>
+            </TextBlock>
         </StackPanel>
 
     </Grid>

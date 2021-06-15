@@ -15,6 +15,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Diagnostics;
 using MySql.Data.MySqlClient;
 
 namespace Your_Turn_Client
@@ -25,6 +26,7 @@ namespace Your_Turn_Client
         bool isRegisterInputID, isRegisterInputPassword, isRegisterInputCheckPassword, isRegisterInputNickName, isSamePassword, isCanUseThisNickName, isCanUseThisID,  isPossibleRegister = false;
         Scripts.DB DB = new Scripts.DB();
         Scripts.FileManager File = new Scripts.FileManager();
+        string GameFath = "D:\\YourTurn\\Your_Turn.exe";
 
         public MainWindow()
         {
@@ -125,6 +127,13 @@ namespace Your_Turn_Client
             RegisterPanel.Visibility = Visibility.Collapsed;
             PlayPanel.Visibility = Visibility.Collapsed;
             LoginBeforeBackGroundImage.Visibility = Visibility.Visible;
+        }
+
+        private void ClickGameStart(object sender, RoutedEventArgs e)
+        {
+            GameStartButton.Visibility = Visibility.Collapsed;
+            GameText.Visibility = Visibility.Visible;
+            Process.Start(GameFath);
         }
 
         private void LoginButtonClick(object sender, RoutedEventArgs e)
